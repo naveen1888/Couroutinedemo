@@ -16,29 +16,14 @@ class WeatherViewModel(private val repository: WeatherRepository) : BaseViewMode
     val weather: LiveData<Resource<WeatherResponse>>
         get() = _weather
 
-    private val _pokemon: MutableLiveData<Resource<PokeResponse>> = MutableLiveData()
-    val pokemon: LiveData<Resource<PokeResponse>>
-        get() = _pokemon
-
     init {
-        getPokeMon()
         getWeather()
     }
-
-//    private suspend fun demo() {
-//        val one = withContext(Dispatchers.IO) { getWeather("Las Vegas") }
-//        val two = withContext(Dispatchers.IO) { getPokeMon() }
-//
-//    }
 
     private fun getWeather() = viewModelScope.launch {
         _weather.value = Resource.Loading
         _weather.value = repository.getWeather("Las Vegas")
     }
 
-    private fun getPokeMon() = viewModelScope.launch {
-        _pokemon.value = Resource.Loading
-       // _pokemon.value = repository.getPokeMon(10, 10)
-    }
 
 }
