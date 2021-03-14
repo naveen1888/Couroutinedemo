@@ -10,7 +10,7 @@ class RemoteDataSource {
 
     companion object {
         private const val BASE_URL = "https://api.openweathermap.org/data/"
-        const val API_KEY = "c628672320d04a1d859e08b9f5bb6fb1";
+        const val API_KEY = "Your Api Token --->> Paste Here <----";
 
     }
 
